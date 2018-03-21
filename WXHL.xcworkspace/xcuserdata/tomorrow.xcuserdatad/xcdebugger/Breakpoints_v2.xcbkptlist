@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WXHL/CustomClass/Kline(K&#x7ebf;&#x56fe;)/cell/HMScoreTopViewTableViewCell.m"
-            timestampString = "543205866.976643"
+            timestampString = "543289259.549737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191">
+            startingLineNumber = "30"
+            endingLineNumber = "30">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -103,13 +103,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WXHL/CustomClass/Kline(K&#x7ebf;&#x56fe;)/controller/HMScoreViewController.m"
-            timestampString = "543220800.842279"
+            filePath = "WXHL/CustomClass/My(&#x4e2a;&#x4eba;&#x4e2d;&#x5fc3;)/controller/&#x6d88;&#x8d39;&#x7ea2;&#x5229;/ZWHBonusViewController.m"
+            timestampString = "543289852.798118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "506"
+            endingLineNumber = "506"
+            landmarkName = "-headerView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -412,6 +412,7 @@
 		86F647501FDA58C900873E41 /* ZWHMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F6474F1FDA58C900873E41 /* ZWHMessageDetailViewController.m */; };
 		E59EEC5A20521F8400243A15 /* scoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59EEC5920521F8400243A15 /* scoreViewController.m */; };
 		E59EEC5D2057BF0B00243A15 /* HMScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = E59EEC5C2057BF0B00243A15 /* HMScoreView.m */; };
+		E5D7C5D82061F37F00FB42A4 /* HMScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C5D72061F37F00FB42A4 /* HMScoreModel.m */; };
 		E5F5B0EC205A03880089C58A /* HMScoreScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F5B0EB205A03880089C58A /* HMScoreScrollView.m */; };
 		E5F5B0F2205A45D80089C58A /* HMScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F5B0F1205A45D80089C58A /* HMScoreViewController.m */; };
 		E5F5B0F5205A4C0B0089C58A /* HMScoreTopViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F5B0F4205A4C0B0089C58A /* HMScoreTopViewTableViewCell.m */; };
@@ -1179,6 +1180,8 @@
 		E59EEC5920521F8400243A15 /* scoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = scoreViewController.m; sourceTree = "<group>"; };
 		E59EEC5B2057BF0B00243A15 /* HMScoreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreView.h; sourceTree = "<group>"; };
 		E59EEC5C2057BF0B00243A15 /* HMScoreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreView.m; sourceTree = "<group>"; };
+		E5D7C5D62061F37F00FB42A4 /* HMScoreModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreModel.h; sourceTree = "<group>"; };
+		E5D7C5D72061F37F00FB42A4 /* HMScoreModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreModel.m; sourceTree = "<group>"; };
 		E5F5B0E9205A03470089C58A /* HMScoreScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScoreScrollView.h; sourceTree = "<group>"; };
 		E5F5B0EB205A03880089C58A /* HMScoreScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScoreScrollView.m; sourceTree = "<group>"; };
 		E5F5B0F0205A45D80089C58A /* HMScoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreViewController.h; sourceTree = "<group>"; };
@@ -2617,7 +2620,7 @@
 			children = (
 				8605AEEE1FB04772009570CA /* cell */,
 				8605AEEF1FB04772009570CA /* controller */,
-				8605AEF21FB04772009570CA /* model */,
+				E5D7C5D52061F32900FB42A4 /* Model */,
 				8605AEF31FB04772009570CA /* view */,
 			);
 			path = "Kline(K线图)";
@@ -2651,13 +2654,6 @@
 				E5F5B0F1205A45D80089C58A /* HMScoreViewController.m */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		8605AEF21FB04772009570CA /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 		8605AEF31FB04772009570CA /* view */ = {
@@ -3004,6 +3000,15 @@
 				86DCA3E41FC8052D002793AE /* DistrictModel.m */,
 			);
 			path = AddModelPicker;
+			sourceTree = "<group>";
+		};
+		E5D7C5D52061F32900FB42A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E5D7C5D62061F37F00FB42A4 /* HMScoreModel.h */,
+				E5D7C5D72061F37F00FB42A4 /* HMScoreModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3429,6 +3434,7 @@
 				86443A671FBA9C010061AEB6 /* ZSNorTableBottomView.m in Sources */,
 				860F5A601FCE47B2009D3A8A /* LBXAlertAction.m in Sources */,
 				8605ADDC1FB02F6A009570CA /* NSTimer+YYAdd.m in Sources */,
+				E5D7C5D82061F37F00FB42A4 /* HMScoreModel.m in Sources */,
 				866812041FB182F1006F28AC /* ZWHBuinessViewController.m in Sources */,
 				860F5A991FCE4C00009D3A8A /* JQScanNetAnimation.m in Sources */,
 				8605AE281FB02F6B009570CA /* ZWHLCMD5Tool.m in Sources */,

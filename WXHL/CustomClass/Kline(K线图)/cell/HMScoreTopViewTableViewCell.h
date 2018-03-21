@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HMScoreScrollView.h"
 
 @interface HMScoreTopViewTableViewCell : UITableViewCell
 @property (nonatomic, strong) NSArray * titleArray;
 @property (nonatomic, strong) NSArray * dataArray;
 @property (nonatomic, strong) UIColor * initroColor;
+
+@property (nonatomic, strong) HMScoreScrollView * scoreView;
 @end

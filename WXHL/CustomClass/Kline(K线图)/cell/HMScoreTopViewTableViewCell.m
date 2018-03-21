@@ -8,17 +8,22 @@
 
 #import "HMScoreTopViewTableViewCell.h"
 
+
 @implementation HMScoreTopViewTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+//        [self.contentView addSubview:_scoreView];
+        self.backgroundColor = [UIColor redColor];
+    }
+    return self;
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setScoreView:(HMScoreScrollView *)scoreView
+{
+    _scoreView = scoreView;
+    if (_scoreView == nil) {
+        _scoreView = [[HMScoreScrollView alloc] init];
+    }
 }
-
 @end

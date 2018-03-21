@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "scoreViewController.h"
 @class ZWHMyWorkModel;
-@interface HMScoreScrollView : UIScrollView
+@interface HMScoreScrollView : UIView
 @property(nonatomic, strong) UIView * TopView;
 @property(nonatomic, assign) float amount;
 @property (nonatomic, strong) ZWHMyWorkModel * dataModel;
