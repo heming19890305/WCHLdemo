@@ -100,16 +100,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WXHL/CustomClass/My(&#x4e2a;&#x4eba;&#x4e2d;&#x5fc3;)/controller/&#x6d88;&#x8d39;&#x7ea2;&#x5229;/ZWHBonusViewController.m"
-            timestampString = "543289852.798118"
+            filePath = "WXHL/CustomClass/Kline(K&#x7ebf;&#x56fe;)/controller/HMScoreViewController.m"
+            timestampString = "543314648.677267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
-            landmarkName = "-headerView"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
