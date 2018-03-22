@@ -86,7 +86,7 @@
         if (ReturnValue == 200) {
             NSLog(@"%@",obj);
             ZWHMyWorkModel *model = [ZWHMyWorkModel mj_objectWithKeyValues:obj[@"data"]];
-//            weakSelf.price.text = [NSString stringWithFormat:@"¥%@",model.scorePrice];
+            weakSelf.price.text = [NSString stringWithFormat:@"¥%@",model.scorePrice];
             weakSelf.yue.text = [NSString stringWithFormat:@"¥%@",model.userBalance];
             weakSelf.num.text = [NSString stringWithFormat:@"¥%@",model.scoreNumber];
             weakSelf.value.text = [NSString stringWithFormat:@"¥%@",model.scoreMarket];

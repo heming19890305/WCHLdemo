@@ -9,6 +9,7 @@
 #import "HMScoreViewController.h"
 #import "HMScoreTopViewTableViewCell.h"
 #import "HMScoreMidViewTableViewCell.h"
+#import "HMSellScoreViewViewController.h"
 
 #define TOP_CELL @"HMScoreTopViewTableViewCell"
 #define MID_CELL @"HMScoreMidViewTableViewCell"
@@ -75,6 +76,7 @@
 
         [self getData];
     }];
+    //订单和分成数据
 }
 //刷新数据
 - (void)setRefresh
@@ -86,7 +88,24 @@
 
 - (void)getData
 {
+    MJWeakSelf
     NSLog(@"获取数据");
+    [HttpHandler getMyWorkpoints:@{@"v_weichao":[UserManager token]} Success:^(id obj) {
+        if (ReturnValue == 200) {
+            NSLog(@"%@",obj);
+            ZWHMyWorkModel *model = [ZWHMyWorkModel mj_objectWithKeyValues:obj[@"data"]];
+            weakSelf.gotScore.text = [NSString stringWithFormat:@"¥%@",model.scorePrice];
+            weakSelf.unGotScore.text = [NSString stringWithFormat:@"¥%@",model.userBalance];
+            
+            [weakSelf setRefresh];
+        }else{
+            ShowInfoWithStatus(ErrorMessage);
+            [weakSelf setRefresh];
+        }
+    } failed:^(id obj) {
+        ShowInfoWithStatus(ErrorNet);
+        [weakSelf setRefresh];
+    }];
 }
 
 //headerView
@@ -116,8 +135,8 @@
         .widthIs(labelSize.width)
         .heightIs(labelSize.height);
         //2.1工分个数
-        UILabel * gotScore = [UILabel new];
-        gotScore.textColor = [UIColor whiteColor];
+       _gotScore = [UILabel new];
+        _gotScore.textColor = [UIColor whiteColor];
         double c = 3628428;
         NSString * str ;
         if (c > 10000) {
@@ -127,13 +146,13 @@
         {
             str = [NSString stringWithFormat:@"%0.f",c];
         }
-        gotScore.font = [UIFont systemFontOfSize:28.0];
+        _gotScore.font = [UIFont systemFontOfSize:28.0];
         //自适应UILabel 大小
-        CGSize gotScoreSize = [self addLabel:gotScore string:str];
+        CGSize gotScoreSize = [self addLabel:_gotScore string:str];
         
-        gotScore.numberOfLines = 0;
-        [_headerView addSubview:gotScore];
-        gotScore.sd_layout
+        _gotScore.numberOfLines = 0;
+        [_headerView addSubview:_gotScore];
+        _gotScore.sd_layout
         .topSpaceToView(gotScoreLabel, 3)
         .centerXEqualToView(_headerView)
         .widthIs(gotScoreSize.width)
@@ -149,13 +168,13 @@
         CGSize unGotLabelSize = [self addLabel:unGotSoreLabel string:unGotStr];
         [_headerView addSubview:unGotSoreLabel];
         unGotSoreLabel.sd_layout
-        .topSpaceToView(gotScore, 15)
+        .topSpaceToView(_gotScore, 15)
         .centerXEqualToView(_headerView)
         .widthIs(unGotLabelSize.width)
         .heightIs(unGotLabelSize.height);
         //3.1未获得工分num
-        UILabel * unGotScore = [UILabel new];
-        unGotScore.textColor = [UIColor whiteColor];
+      _unGotScore = [UILabel new];
+        _unGotScore.textColor = [UIColor whiteColor];
         double d = 12345678;
         NSString * unStr;
         if (d > 10000) {
@@ -164,12 +183,12 @@
         }else{
             unStr = [NSString stringWithFormat:@"%0.f",d];
         }
-        unGotScore.font = [UIFont systemFontOfSize:16.0];
-        CGSize unGotScoreSize = [self addLabel:unGotScore string:unStr];
-        unGotScore.text = unStr;
-        unGotScore.numberOfLines = 0;
-        [_headerView addSubview:unGotScore];
-        unGotScore.sd_layout
+        _unGotScore.font = [UIFont systemFontOfSize:16.0];
+        CGSize unGotScoreSize = [self addLabel:_unGotScore string:unStr];
+        _unGotScore.text = unStr;
+        _unGotScore.numberOfLines = 0;
+        [_headerView addSubview:_unGotScore];
+        _unGotScore.sd_layout
         .topSpaceToView(unGotSoreLabel, 3)
         .centerXEqualToView(_headerView)
         .widthIs(unGotScoreSize.width)
@@ -187,7 +206,7 @@
         [_headerView addSubview:sellBtn];
         //        sellBtn.sd_layout.topEqualToView(_num, HEIGHT_TO(31)).lefts
         sellBtn.sd_layout
-        .topSpaceToView(unGotScore, HEIGHT_TO(31))
+        .topSpaceToView(_unGotScore, HEIGHT_TO(31))
         .centerXEqualToView(_headerView)
         .widthIs(WIDTH_TO(120))
         .heightIs(HEIGHT_TO(38));
@@ -208,9 +227,16 @@
     }
     return _headerView;
 }
+//工分卖出按钮
 - (void)sellClick
 {
     NSLog(@"卖出工分");
+    HMSellScoreViewViewController *sellScoreView = [[HMSellScoreViewViewController alloc] init];
+    sellScoreView.title = @"卖出工分";
+    [self setHidesBottomBarWhenPushed:YES];
+    UIBarButtonItem * backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backBtn;
+    [self.navigationController pushViewController:sellScoreView animated:YES];
 }
 //自适应UILabel 大小
 - (CGSize)addLabel:(UILabel *)label string:(NSString *)string {

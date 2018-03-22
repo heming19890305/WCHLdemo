@@ -9,5 +9,11 @@
 #import "BasicViewController.h"
 
 @interface HMScoreViewController : BasicViewController
+@property (nonatomic, strong) UILabel * gotScore;
+@property (nonatomic, strong) UILabel * unGotScore;
+@property (nonatomic, strong) UILabel * orderNum;
+@property (nonatomic, strong) UILabel * orderAmount;
+@property (nonatomic, strong) UILabel * boundsNum;
+@property (nonatomic, strong) UILabel * boundsAmount;
 
 @end
