@@ -414,6 +414,7 @@
 		E59EEC5D2057BF0B00243A15 /* HMScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = E59EEC5C2057BF0B00243A15 /* HMScoreView.m */; };
 		E5D7C5D82061F37F00FB42A4 /* HMScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C5D72061F37F00FB42A4 /* HMScoreModel.m */; };
 		E5D7C5DB2063888000FB42A4 /* HMSellScoreViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C5DA2063888000FB42A4 /* HMSellScoreViewViewController.m */; };
+		E5D7C5DE2064F0A100FB42A4 /* HMPasswordAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C5DD2064F0A100FB42A4 /* HMPasswordAlertView.m */; };
 		E5F5B0EC205A03880089C58A /* HMScoreScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F5B0EB205A03880089C58A /* HMScoreScrollView.m */; };
 		E5F5B0F2205A45D80089C58A /* HMScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F5B0F1205A45D80089C58A /* HMScoreViewController.m */; };
 		E5F5B0F5205A4C0B0089C58A /* HMScoreTopViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F5B0F4205A4C0B0089C58A /* HMScoreTopViewTableViewCell.m */; };
@@ -1185,6 +1186,8 @@
 		E5D7C5D72061F37F00FB42A4 /* HMScoreModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreModel.m; sourceTree = "<group>"; };
 		E5D7C5D92063888000FB42A4 /* HMSellScoreViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMSellScoreViewViewController.h; sourceTree = "<group>"; };
 		E5D7C5DA2063888000FB42A4 /* HMSellScoreViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMSellScoreViewViewController.m; sourceTree = "<group>"; };
+		E5D7C5DC2064F0A100FB42A4 /* HMPasswordAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMPasswordAlertView.h; sourceTree = "<group>"; };
+		E5D7C5DD2064F0A100FB42A4 /* HMPasswordAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMPasswordAlertView.m; sourceTree = "<group>"; };
 		E5F5B0E9205A03470089C58A /* HMScoreScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScoreScrollView.h; sourceTree = "<group>"; };
 		E5F5B0EB205A03880089C58A /* HMScoreScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScoreScrollView.m; sourceTree = "<group>"; };
 		E5F5B0F0205A45D80089C58A /* HMScoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreViewController.h; sourceTree = "<group>"; };
@@ -2670,6 +2673,8 @@
 				E5F5B0EB205A03880089C58A /* HMScoreScrollView.m */,
 				E5D7C5D92063888000FB42A4 /* HMSellScoreViewViewController.h */,
 				E5D7C5DA2063888000FB42A4 /* HMSellScoreViewViewController.m */,
+				E5D7C5DC2064F0A100FB42A4 /* HMPasswordAlertView.h */,
+				E5D7C5DD2064F0A100FB42A4 /* HMPasswordAlertView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3299,6 +3304,7 @@
 				8605AE0A1FB02F6B009570CA /* NSAttributedString+YYText.m in Sources */,
 				8605AED41FB0446F009570CA /* UIImage+WF.m in Sources */,
 				8659AD161FC2BACD00F309F8 /* ZWHBankModel.m in Sources */,
+				E5D7C5DE2064F0A100FB42A4 /* HMPasswordAlertView.m in Sources */,
 				8605AE171FB02F6B009570CA /* YYFileHash.m in Sources */,
 				8605ADC21FB02F6A009570CA /* TZPhotoPickerController.m in Sources */,
 				8605AE1C1FB02F6B009570CA /* YYThreadSafeArray.m in Sources */,

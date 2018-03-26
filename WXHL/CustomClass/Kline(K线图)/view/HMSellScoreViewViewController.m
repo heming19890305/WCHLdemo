@@ -33,7 +33,7 @@
     _scoreField.font = FontWithSize(17);
     scoreField.textColor = ZWHCOLOR(@"646363");
     if (@available(iOS 10.0, *)) {
-        scoreField.keyboardType = UIKeyboardTypeDefault;
+        scoreField.keyboardType = UIKeyboardTypeNumberPad;
     } else {
         // Fallback on earlier versions
     }
@@ -43,6 +43,19 @@
     .leftSpaceToView(self.view, 30)
     .rightSpaceToView(self.view, 30)
     .heightIs(40);
+    
+    UIButton * nextBtn = [[UIButton alloc] init];
+    nextBtn.backgroundColor = [UIColor orangeColor];
+    [nextBtn setTitleColor:[UIColor whiteColor] forState:0];
+    [nextBtn setTitle:@"下一步" forState:0];
+    [nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:nextBtn];
+    nextBtn.sd_layout
+    .topSpaceToView(scoreField, 30)
+    .leftSpaceToView(self.view, 30)
+    .rightSpaceToView(self.view, 30)
+    .heightIs(40);
+    
     
 }
 //顶部view
@@ -104,6 +117,12 @@
     .heightIs(scoreNumSize.height)
     .widthIs(scoreNumSize.width);
     
+}
+- (void)nextBtnClick
+{
+    float sum = [_scoreField.text floatValue];
+    
+    NSLog(@"num = %f",sum);
 }
 
 //自适应UILabel 大小
