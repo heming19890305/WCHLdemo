@@ -2658,6 +2658,8 @@
 				8605AEFB1FB04E79009570CA /* ZWHKlineViewController.m */,
 				E5F5B0F0205A45D80089C58A /* HMScoreViewController.h */,
 				E5F5B0F1205A45D80089C58A /* HMScoreViewController.m */,
+				E5D7C5D92063888000FB42A4 /* HMSellScoreViewViewController.h */,
+				E5D7C5DA2063888000FB42A4 /* HMSellScoreViewViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2671,8 +2673,6 @@
 				E59EEC5C2057BF0B00243A15 /* HMScoreView.m */,
 				E5F5B0E9205A03470089C58A /* HMScoreScrollView.h */,
 				E5F5B0EB205A03880089C58A /* HMScoreScrollView.m */,
-				E5D7C5D92063888000FB42A4 /* HMSellScoreViewViewController.h */,
-				E5D7C5DA2063888000FB42A4 /* HMSellScoreViewViewController.m */,
 				E5D7C5DC2064F0A100FB42A4 /* HMPasswordAlertView.h */,
 				E5D7C5DD2064F0A100FB42A4 /* HMPasswordAlertView.m */,
 			);

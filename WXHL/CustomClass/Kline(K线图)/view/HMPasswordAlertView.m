@@ -26,7 +26,8 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
-        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+        
         self.inputTextFiled = [[UITextField alloc] init];
         self.inputTextFiled.keyboardType = UIKeyboardTypeNumberPad;
         self.inputTextFiled.delegate = self;
@@ -283,6 +284,7 @@
 //密码文字改变 inputTextChange
 - (void)inputTextChange:(UITextField *)textField
 {
+    NSLog(@"被点击了");
     self.tipsLabel.hidden = YES;
     NSLog(@"%@",textField.text);
     
@@ -355,5 +357,10 @@
 //销毁通知
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"你点到我了");
+    [self cancleBtnClick];
 }
 @end

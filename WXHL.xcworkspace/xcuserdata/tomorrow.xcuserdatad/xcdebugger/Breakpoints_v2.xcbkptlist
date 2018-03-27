@@ -100,16 +100,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WXHL/CustomClass/Kline(K&#x7ebf;&#x56fe;)/controller/HMScoreViewController.m"
-            timestampString = "543483503.716221"
+            filePath = "WXHL/CustomClass/Kline(K&#x7ebf;&#x56fe;)/view/HMPasswordAlertView.m"
+            timestampString = "543811040.88411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "-inputTextChange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

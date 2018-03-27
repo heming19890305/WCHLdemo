@@ -10,6 +10,7 @@
 #import "HMScoreTopViewTableViewCell.h"
 #import "HMScoreMidViewTableViewCell.h"
 #import "HMSellScoreViewViewController.h"
+//#import "HMPasswordAlertView.h"
 
 #define TOP_CELL @"HMScoreTopViewTableViewCell"
 #define MID_CELL @"HMScoreMidViewTableViewCell"

@@ -7,10 +7,13 @@
 //
 
 #import "HMSellScoreViewViewController.h"
+#import "HMPasswordAlertView.h"
 
-@interface HMSellScoreViewViewController ()
+@interface HMSellScoreViewViewController ()<HMPassWordAlertViewDelegate>
 @property (nonatomic, strong) UIView * topview;
 @property (nonatomic, strong) UITextField * scoreField;
+@property (nonatomic, strong) HMPasswordAlertView * alertDefaultView;
+@property (nonatomic, strong) HMPasswordAlertView * alertSheetView;
 
 @end
 
@@ -55,6 +58,20 @@
     .leftSpaceToView(self.view, 30)
     .rightSpaceToView(self.view, 30)
     .heightIs(40);
+    
+    //提示框
+    //默认样式
+    _alertDefaultView = [[HMPasswordAlertView alloc] initWithType:passwordAlertViewType_default];
+    _alertDefaultView.delegate = self;
+    _alertDefaultView.titleLabel.text = @"请输入交易密码";
+    _alertDefaultView.tipsLabel.text = @"您输入的密码不正确！";
+    
+    //sheet样式
+    _alertSheetView = [[HMPasswordAlertView alloc] initWithType:passwordAlertViewType_sheet];
+    _alertSheetView.delegate = self;
+    _alertSheetView.titleLabel.text = @"请输入交易密码";
+    _alertSheetView.tipsLabel.text = @"您输入的密码不正确！";
+    
     
     
 }
@@ -121,10 +138,38 @@
 - (void)nextBtnClick
 {
     float sum = [_scoreField.text floatValue];
-    
+    [_alertDefaultView show];
+//    [_alertSheetView show];
     NSLog(@"num = %f",sum);
 }
+- (void)passwordAlertViewCompleteInputWith:(NSString *)password
+{
+    NSLog(@"输入的密码为：%@",password);
+    
+    if ([password isEqualToString:@"554637"]) {
+        NSLog(@"密码正确");
+        [_alertDefaultView passwordCorrect];
+        //这里必须延迟一下，不然看不到最后一个黑点显示，整个视图就消失了
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_alertSheetView passwordCorrect];
+        });
+    }else
+    {
+        NSLog(@"密码错误");
+        [_alertDefaultView passwordError];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_alertSheetView passwordError];
+        });
+    }
+}
+- (void)passwordAlertViewDidClickCancleButton{
+    NSLog(@"点击了取消按钮");
+}
 
+- (void)passwordAlertViewDidClickForgetButton
+{
+    NSLog(@"点击了密码忘记按钮");
+}
 //自适应UILabel 大小
 - (CGSize)addLabel:(UILabel *)label string:(NSString *)string font:(float)font{
     label.text = string;
