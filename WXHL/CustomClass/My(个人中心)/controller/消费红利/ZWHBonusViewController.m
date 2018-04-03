@@ -223,7 +223,7 @@
             {
                 [HttpHandler getWalletInfo:@{@"v_weichao":[UserManager token]} Success:^(id obj) {
                     if (ReturnValue == 200) {
-                        NSLog(@"%@",obj);
+                        NSLog(@"+++++++++++%@",obj);
                         ZWHWalletModel *model = [ZWHWalletModel mj_objectWithKeyValues:obj[@"data"]];
                         ZWHBalanceViewController *vc = [[ZWHBalanceViewController alloc]init];
                         vc.state = @"2";

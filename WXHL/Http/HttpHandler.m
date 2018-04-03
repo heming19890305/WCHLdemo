@@ -113,9 +113,14 @@
     [self appendGetUrl:@"/api/v1/getCurrentUser" success:success failed:failed postDict:dict];
 }
 
+#pragma MARK - 获取工分参数
++(void)getScore:(NSDictionary *)dict Success:(SuccessBlock)success failed:(FailedBlock)failed{
+    [self appendGetUrl:@"/api/workpoints/v1/vipWkpList" success:success failed:failed postDict:dict];
+}
 #pragma mark - 获得我的工分信息
 +(void)getMyWorkpoints:(NSDictionary *)dict Success:(SuccessBlock)success failed:(FailedBlock)failed{
     [self appendGetUrl:@"/api/workpoints/v1/getMyWorkpoints" success:success failed:failed postDict:dict];
+//    [self appendGetUrl:@"/api/workpoints/v1/vipWkpList" success:success failed:failed postDict:dict];
 }
 
 #pragma mark - 修改个人信息
@@ -430,6 +435,8 @@
 
 #pragma mark - 获得工分统计信息
 +(void)getCurWorkPoints:(NSDictionary *)dict Success:(SuccessBlock)success failed:(FailedBlock)failed{
+    
+//    [self appendGetUrl:@"/api/workpoints/v1/vipWkpList" success:success failed:failed postDict:dict];
     [self appendGetUrl:@"/api/statistic/v1/getCurWorkPoints" success:success failed:failed postDict:dict];
 }
 

@@ -92,24 +92,24 @@
     [HttpHandler getOrder:dict Success:^(id obj) {
         if (ReturnValue == 200) {
             NSLog(@"%@",obj);
-            if ([obj[@"data"][@"list"] count] == 0) {
-                weakSelf.index -- ;
-            }
-            [ZWHOrderModel mj_setupObjectClassInArray:^NSDictionary *{
-                return @{@"goodsList":@"ZWHGoodsModel"};
-            }];
-            [weakSelf.dataArray addObjectsFromArray:[ZWHOrderModel mj_objectArrayWithKeyValuesArray:obj[@"data"][@"list"]]];
-            //[weakSelf.tableView reloadData];
-            if (weakSelf.tableView) {
-                [weakSelf.tableView reloadData];
-            }else{
-                [weakSelf creatView];
-                [self setrefresh];
-            }
-            [weakSelf endrefresh];
-        }else{
-            ShowInfoWithStatus(ErrorMessage);
-            [weakSelf endrefresh];
+//            if ([obj[@"data"][@"list"] count] == 0) {
+//                weakSelf.index -- ;
+//            }
+//            [ZWHOrderModel mj_setupObjectClassInArray:^NSDictionary *{
+//                return @{@"goodsList":@"ZWHGoodsModel"};
+//            }];
+//            [weakSelf.dataArray addObjectsFromArray:[ZWHOrderModel mj_objectArrayWithKeyValuesArray:obj[@"data"][@"list"]]];
+//            //[weakSelf.tableView reloadData];
+//            if (weakSelf.tableView) {
+//                [weakSelf.tableView reloadData];
+//            }else{
+//                [weakSelf creatView];
+//                [self setrefresh];
+//            }
+//            [weakSelf endrefresh];
+//        }else{
+//            ShowInfoWithStatus(ErrorMessage);
+//            [weakSelf endrefresh];
         }
     } failed:^(id obj) {
         ShowInfoWithStatus(ErrorNet);

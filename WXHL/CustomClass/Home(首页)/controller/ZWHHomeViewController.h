@@ -9,5 +9,6 @@
 #import "BasicViewController.h"
 
 @interface ZWHHomeViewController : BasicViewController
+@property(nonatomic,copy)NSString *state;
 
 @end

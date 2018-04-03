@@ -12,6 +12,7 @@
 
 #pragma mark *********************************登录注册**************************
 
+
 #pragma mark - 获取系统参数
 +(void)getSysConfig:(NSDictionary *)dict Success:(SuccessBlock)success failed:(FailedBlock)failed;
 
@@ -254,8 +255,8 @@
 +(void)getOrderStatusNum:(NSDictionary *)dict Success:(SuccessBlock)success failed:(FailedBlock)failed;
 
 
-
-
+#pragma mark - 获取工分
++(void)getScore:(NSDictionary *)dict Success:(SuccessBlock)success failed:(FailedBlock)failed;
 
 
 @end

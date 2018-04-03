@@ -90,22 +90,33 @@
 - (void)getData
 {
     MJWeakSelf
-    NSLog(@"获取数据");
+//    NSLog(@"获取数据");
     [HttpHandler getMyWorkpoints:@{@"v_weichao":[UserManager token]} Success:^(id obj) {
         if (ReturnValue == 200) {
-            NSLog(@"%@",obj);
+            NSLog(@"+++++++++++%@",obj);
             ZWHMyWorkModel *model = [ZWHMyWorkModel mj_objectWithKeyValues:obj[@"data"]];
             weakSelf.gotScore.text = [NSString stringWithFormat:@"¥%@",model.scorePrice];
             weakSelf.unGotScore.text = [NSString stringWithFormat:@"¥%@",model.userBalance];
-            
+
             [weakSelf setRefresh];
         }else{
             ShowInfoWithStatus(ErrorMessage);
             [weakSelf setRefresh];
         }
     } failed:^(id obj) {
+//        NSLog(@"error = %@",obj);
         ShowInfoWithStatus(ErrorNet);
         [weakSelf setRefresh];
+    }];
+//     private String consumerNo;
+//        private String businessNo
+    NSString * urlString = @"http://192.168.2.99:8087/api/workpoints/v1/vipWkpList";
+    urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "].invertedSet];
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    [session GET:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"成功");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"失败");
     }];
 }
 
