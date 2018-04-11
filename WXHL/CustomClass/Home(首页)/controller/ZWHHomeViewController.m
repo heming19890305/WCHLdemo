@@ -57,8 +57,6 @@
 @property(nonatomic,strong)NSMutableArray *dowmArray;
 @property(nonatomic,strong)NSMutableArray *dataArray;
 
-@property(nonatomic,assign)NSInteger index;
-
 @end
 
 @implementation ZWHHomeViewController
@@ -134,7 +132,7 @@
     MJWeakSelf
     [HttpHandler getHome:@{@"client":@2} Success:^(id obj) {
         if (ReturnValue == 200) {
-            NSLog(@"client-------%@",obj);
+            NSLog(@"%@",obj);
             //广告
             if ([obj[@"data"][@"banner"] count] > 0) {
                 NSMutableArray *arrayM = [NSMutableArray array];
@@ -172,58 +170,6 @@
         ShowInfoWithStatus(ErrorNet);
         [weakSelf endrefresh];
     }];
-#pragma waring
-    
-//    MJWeakSelf
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:ZWHINTTOSTR(_index) forKey:@"pageNo"];
-    [dict setValue:@"20" forKey:@"pageSize"];
-    [dict setValue:[UserManager token] forKey:@"v_weichao"];
-    switch ([_state integerValue]) {
-        case 1:
-            [dict setValue:@"0" forKey:@"status"];
-            break;
-        case 2:
-            [dict setValue:@"2" forKey:@"status"];
-            break;
-        case 3:
-            [dict setValue:@"3" forKey:@"status"];
-            break;
-        default:
-            break;
-    }
-    [HttpHandler getScore:dict Success:^(id obj) {
-        NSLog(@"成功成功成功 = %@",obj);
-    } failed:^(id obj) {
-        NSLog(@"失败失败失败失败 = %@",obj);
-    }];
-//    [HttpHandler getOrder:dict Success:^(id obj)
-
-//        if (ReturnValue == 200) {
-//            NSLog(@"%@",obj);
-////            if ([obj[@"data"][@"list"] count] == 0) {
-////                weakSelf.index -- ;
-////            }
-//
-//            [weakSelf.dataArray addObjectsFromArray:[ZWHOrderModel mj_objectArrayWithKeyValuesArray:obj[@"data"][@"list"]]];
-//            //[weakSelf.tableView reloadData];
-//            if (weakSelf.tableView) {
-//                [weakSelf.tableView reloadData];
-//            }e[ZWHOrderModel mj_setupObjectClassInArray:^NSDictionary *{
-//                return @{@"goodsList":@"ZWHGoodsModel"};
-//            }];lse{
-//                [weakSelf creatView];
-//                [self setrefresh];
-//            }
-//            [weakSelf endrefresh];
-//        }else{
-//            ShowInfoWithStatus(ErrorMessage);
-//            [weakSelf endrefresh];
-//        }
-//    } failed:^(id obj) {
-//        ShowInfoWithStatus(ErrorNet);
-////        [weakSelf endrefresh];
-//    }];
 }
 
 #pragma mark - 刷新
@@ -299,7 +245,7 @@
                 }
                 [HttpHandler getWalletInfo:@{@"v_weichao":[UserManager token]} Success:^(id obj) {
                     if (ReturnValue == 200) {
-                        NSLog(@"obj*** = %@",obj);
+                        NSLog(@"%@",obj);
                         ZWHWalletViewController *vc = [[ZWHWalletViewController alloc]init];
                         ZWHWalletModel *model = [ZWHWalletModel mj_objectWithKeyValues:obj[@"data"]];
                         vc.model = model;

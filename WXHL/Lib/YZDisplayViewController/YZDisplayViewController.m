@@ -763,7 +763,7 @@ static NSString * const ID = @"CONTENTCELL";
     CGFloat underLineTransformX = offsetDelta * centerDelta / YZScreenW;
     
     // 宽度递增偏移量
-    CGFloat underLineWidth = offsetDelta * widthDelta / YZScreenW;
+    CGFloat underLineWidth = offsetDelta * widthDelta  / YZScreenW;
     
     self.underLine.yz_width += underLineWidth;
     self.underLine.yz_x += underLineTransformX;

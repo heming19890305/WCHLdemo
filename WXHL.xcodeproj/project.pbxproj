@@ -410,6 +410,9 @@
 		86F317A31FE391BC0049BF44 /* ZWHMyMidView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F317A21FE391BC0049BF44 /* ZWHMyMidView.m */; };
 		86F647411FD90C7100873E41 /* ZWHChoosePayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F647401FD90C7100873E41 /* ZWHChoosePayWayView.m */; };
 		86F647501FDA58C900873E41 /* ZWHMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F6474F1FDA58C900873E41 /* ZWHMessageDetailViewController.m */; };
+		E51DFD7D207C8D060057D7B0 /* HMScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E51DFD7C207C8D060057D7B0 /* HMScoreTableViewCell.m */; };
+		E578FE0D207A09CC00211CDA /* HMScoreSellDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E578FE0C207A09CC00211CDA /* HMScoreSellDataTableViewController.m */; };
+		E578FE10207A0A8E00211CDA /* HMScoreHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E578FE0F207A0A8E00211CDA /* HMScoreHeaderViewController.m */; };
 		E59EEC5A20521F8400243A15 /* scoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59EEC5920521F8400243A15 /* scoreViewController.m */; };
 		E59EEC5D2057BF0B00243A15 /* HMScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = E59EEC5C2057BF0B00243A15 /* HMScoreView.m */; };
 		E5D7C5D82061F37F00FB42A4 /* HMScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C5D72061F37F00FB42A4 /* HMScoreModel.m */; };
@@ -1178,6 +1181,12 @@
 		86F6474E1FDA58C900873E41 /* ZWHMessageDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZWHMessageDetailViewController.h; sourceTree = "<group>"; };
 		86F6474F1FDA58C900873E41 /* ZWHMessageDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZWHMessageDetailViewController.m; sourceTree = "<group>"; };
 		B9C44E4ECD8A684DE626CF00 /* libPods-WXHL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXHL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E51DFD7B207C8D060057D7B0 /* HMScoreTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreTableViewCell.h; sourceTree = "<group>"; };
+		E51DFD7C207C8D060057D7B0 /* HMScoreTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreTableViewCell.m; sourceTree = "<group>"; };
+		E578FE0B207A09CC00211CDA /* HMScoreSellDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreSellDataTableViewController.h; sourceTree = "<group>"; };
+		E578FE0C207A09CC00211CDA /* HMScoreSellDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreSellDataTableViewController.m; sourceTree = "<group>"; };
+		E578FE0E207A0A8E00211CDA /* HMScoreHeaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreHeaderViewController.h; sourceTree = "<group>"; };
+		E578FE0F207A0A8E00211CDA /* HMScoreHeaderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreHeaderViewController.m; sourceTree = "<group>"; };
 		E59EEC5820521F8400243A15 /* scoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = scoreViewController.h; sourceTree = "<group>"; };
 		E59EEC5920521F8400243A15 /* scoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = scoreViewController.m; sourceTree = "<group>"; };
 		E59EEC5B2057BF0B00243A15 /* HMScoreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreView.h; sourceTree = "<group>"; };
@@ -2645,6 +2654,8 @@
 				E5F5B0F7205A4C230089C58A /* HMScoreMidViewTableViewCell.m */,
 				E5F5B0F9205A6AFD0089C58A /* HMScoreBottomTableViewCell.h */,
 				E5F5B0FA205A6AFD0089C58A /* HMScoreBottomTableViewCell.m */,
+				E51DFD7B207C8D060057D7B0 /* HMScoreTableViewCell.h */,
+				E51DFD7C207C8D060057D7B0 /* HMScoreTableViewCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -2660,6 +2671,10 @@
 				E5F5B0F1205A45D80089C58A /* HMScoreViewController.m */,
 				E5D7C5D92063888000FB42A4 /* HMSellScoreViewViewController.h */,
 				E5D7C5DA2063888000FB42A4 /* HMSellScoreViewViewController.m */,
+				E578FE0E207A0A8E00211CDA /* HMScoreHeaderViewController.h */,
+				E578FE0F207A0A8E00211CDA /* HMScoreHeaderViewController.m */,
+				E578FE0B207A09CC00211CDA /* HMScoreSellDataTableViewController.h */,
+				E578FE0C207A09CC00211CDA /* HMScoreSellDataTableViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3198,6 +3213,7 @@
 				86019F1E1FB581FB00F7CBA0 /* ZWHSetPayPasViewController.m in Sources */,
 				8605AD9A1FB02F6A009570CA /* JSONModelArray.m in Sources */,
 				8605ADDD1FB02F6A009570CA /* CALayer+YYAdd.m in Sources */,
+				E578FE10207A0A8E00211CDA /* HMScoreHeaderViewController.m in Sources */,
 				860F5AAB1FCFA807009D3A8A /* ZWHSpeOrderTableViewCell.m in Sources */,
 				866811F61FB15078006F28AC /* ZWHHomeMidView.m in Sources */,
 				8605AE4F1FB02FDB009570CA /* ZSCallManager.m in Sources */,
@@ -3285,6 +3301,7 @@
 				8605ADA51FB02F6A009570CA /* ZYLPickerView.m in Sources */,
 				8605AE191FB02F6B009570CA /* YYKeychain.m in Sources */,
 				860F5A921FCE4C00009D3A8A /* JQScanResultViewController.m in Sources */,
+				E51DFD7D207C8D060057D7B0 /* HMScoreTableViewCell.m in Sources */,
 				8607A3901FB2A8BA003D6B6B /* ZWHRechrDetailTableViewCell.m in Sources */,
 				863455C21FB94C39001EE7A8 /* ZWHConsumeDetailViewController.m in Sources */,
 				8605AEDB1FB0446F009570CA /* UITextField+WF.m in Sources */,
@@ -3467,6 +3484,7 @@
 				86EFDAA21FC50AD60079A9EE /* ZWHCollectModel.m in Sources */,
 				8605AE091FB02F6B009570CA /* YYTextSelectionView.m in Sources */,
 				E5F5B0F5205A4C0B0089C58A /* HMScoreTopViewTableViewCell.m in Sources */,
+				E578FE0D207A09CC00211CDA /* HMScoreSellDataTableViewController.m in Sources */,
 				8605AD9B1FB02F6A009570CA /* JSONModelClassProperty.m in Sources */,
 				8605AED71FB0446F009570CA /* UILabel+YBAttributeTextTapAction.m in Sources */,
 				8605ADEE1FB02F6A009570CA /* YYCache.m in Sources */,

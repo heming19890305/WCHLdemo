@@ -15,5 +15,6 @@
 @property (nonatomic, strong) UILabel * orderAmount;
 @property (nonatomic, strong) UILabel * boundsNum;
 @property (nonatomic, strong) UILabel * boundsAmount;
-
+@property(nonatomic,copy)NSString *state;
+@property(nonatomic,assign)NSInteger index;
 @end

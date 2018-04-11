@@ -11,9 +11,8 @@
 @interface APIConfig : NSObject
 
 //#define SERVER_HOST @"http://112.74.130.39"
-//本地服务器地址
+//本地服务器
 #define SERVER_HOST @"http://192.168.2.99:8087"
-
 //环信账号：3203690161@qq.com   Kph5950108
 
 @end

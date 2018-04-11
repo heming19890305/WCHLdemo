@@ -11,11 +11,19 @@
 #import "HMScoreMidViewTableViewCell.h"
 #import "HMSellScoreViewViewController.h"
 //#import "HMPasswordAlertView.h"
+#import "HMScoreModel.h"
+#import "HMScoreSellDataTableViewController.h"
+#import "HMScoreHeaderViewController.h"
+
+#import "ZWHBaseOrderListViewController.h"
+#import "ZWHMyOrderViewController.h"
 
 #define TOP_CELL @"HMScoreTopViewTableViewCell"
 #define MID_CELL @"HMScoreMidViewTableViewCell"
 @interface HMScoreViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView * tableView;
+
+@property (nonatomic, strong) NSMutableArray * scoreDataArray;
 //顶部工分数据
 
 //订单数据
@@ -41,6 +49,13 @@
     //4.获取数据
     [self getData];
     
+}
+- (NSMutableArray *)scoreDataArray
+{
+    if (_scoreDataArray == nil) {
+        _scoreDataArray = [[NSMutableArray alloc] init];
+    }
+    return _scoreDataArray;
 }
 //初始化子控件
 - (void)setupView
@@ -90,33 +105,22 @@
 - (void)getData
 {
     MJWeakSelf
-//    NSLog(@"获取数据");
+    NSLog(@"获取数据");
     [HttpHandler getMyWorkpoints:@{@"v_weichao":[UserManager token]} Success:^(id obj) {
         if (ReturnValue == 200) {
-            NSLog(@"+++++++++++%@",obj);
+            NSLog(@"%@",obj);
             ZWHMyWorkModel *model = [ZWHMyWorkModel mj_objectWithKeyValues:obj[@"data"]];
             weakSelf.gotScore.text = [NSString stringWithFormat:@"¥%@",model.scorePrice];
             weakSelf.unGotScore.text = [NSString stringWithFormat:@"¥%@",model.userBalance];
-
+            
             [weakSelf setRefresh];
         }else{
             ShowInfoWithStatus(ErrorMessage);
             [weakSelf setRefresh];
         }
     } failed:^(id obj) {
-//        NSLog(@"error = %@",obj);
         ShowInfoWithStatus(ErrorNet);
         [weakSelf setRefresh];
-    }];
-//     private String consumerNo;
-//        private String businessNo
-    NSString * urlString = @"http://192.168.2.99:8087/api/workpoints/v1/vipWkpList";
-    urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "].invertedSet];
-    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
-    [session GET:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"成功");
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"失败");
     }];
 }
 
@@ -243,12 +247,58 @@
 - (void)sellClick
 {
     NSLog(@"卖出工分");
-    HMSellScoreViewViewController *sellScoreView = [[HMSellScoreViewViewController alloc] init];
-    sellScoreView.title = @"卖出工分";
-    [self setHidesBottomBarWhenPushed:YES];
+//    HMSellScoreViewViewController *sellScoreView = [[HMSellScoreViewViewController alloc] init];
+//    sellScoreView.title = @"卖出工分";
+//    [self setHidesBottomBarWhenPushed:YES];
+//    UIBarButtonItem * backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationItem.backBarButtonItem = backBtn;
+//    [self.navigationController pushViewController:sellScoreView animated:YES];
+    
+
+
+    HMScoreSellDataTableViewController * scoreSellDataView = [[HMScoreSellDataTableViewController alloc] init];
+
+    scoreSellDataView.title = @"工  分";
+//    [self setHidesBottomBarWhenPushed:YES];
     UIBarButtonItem * backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backBtn;
-    [self.navigationController pushViewController:sellScoreView animated:YES];
+    [self.navigationController pushViewController:scoreSellDataView animated:YES];
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    [dict setValue:ZWHINTTOSTR(_index) forKey:@"pageNo"];
+//    [dict setValue:@"20" forKey:@"pageSize"];
+//    [dict setValue:[UserManager token] forKey:@"v_weichao"];
+//    switch ([_state integerValue]) {
+//        case 1:
+//            [dict setValue:@"0" forKey:@"status"];
+//            break;
+//        case 2:
+//            [dict setValue:@"2" forKey:@"status"];
+//            break;
+//        case 3:
+//            [dict setValue:@"3" forKey:@"status"];
+//            break;
+//        default:
+//            break;
+//    }
+  
+//    [HttpHandler getScoreData:dict Success:^(id obj) {
+//        if (ReturnValue == 200) {
+//             NSLog(@"obj = %@ ", obj);
+//            self.scoreDataArray = [HMScoreModel mj_objectArrayWithKeyValuesArray:obj[@"data"]];
+//            [self.scoreDataArray addObjectsFromArray:[HMScoreModel mj_objectArrayWithKeyValuesArray:obj[@"data"]]];
+//            for (int i = 0; i < self.scoreDataArray.count; i++) {
+//                NSLog(@"scoreDataArray---%d------ =%@",i,self.scoreDataArray[i]);
+//            }
+//            NSLog(@"scoreDataArray--------- =%@",self.scoreDataArray);
+//             NSLog(@"HMScoreModel= %@",scoreData.createDate)
+//        }
+
+
+        
+//    } failed:^(id obj) {
+//        NSLog(@"dict失败了！--- = %@",obj);
+//    }];
+
 }
 //自适应UILabel 大小
 - (CGSize)addLabel:(UILabel *)label string:(NSString *)string {

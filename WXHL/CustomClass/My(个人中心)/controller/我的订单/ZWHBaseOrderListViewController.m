@@ -91,25 +91,30 @@
     
     [HttpHandler getOrder:dict Success:^(id obj) {
         if (ReturnValue == 200) {
-            NSLog(@"%@",obj);
-//            if ([obj[@"data"][@"list"] count] == 0) {
-//                weakSelf.index -- ;
+            NSLog(@"+++obj+++%@",obj);
+            if ([obj[@"data"][@"list"] count] == 0) {
+                weakSelf.index -- ;
+            }
+            [ZWHOrderModel mj_setupObjectClassInArray:^NSDictionary *{
+                return @{@"goodsList":@"ZWHGoodsModel"};
+            }];
+            [weakSelf.dataArray addObjectsFromArray:[ZWHOrderModel mj_objectArrayWithKeyValuesArray:obj[@"data"][@"list"]]];
+//            for (int i = 0; i < weakSelf.dataArray.count; i++) {
+//                NSLog(@"++++dataArray+++=%@",weakSelf.dataArray[i]);
 //            }
-//            [ZWHOrderModel mj_setupObjectClassInArray:^NSDictionary *{
-//                return @{@"goodsList":@"ZWHGoodsModel"};
-//            }];
-//            [weakSelf.dataArray addObjectsFromArray:[ZWHOrderModel mj_objectArrayWithKeyValuesArray:obj[@"data"][@"list"]]];
-//            //[weakSelf.tableView reloadData];
-//            if (weakSelf.tableView) {
-//                [weakSelf.tableView reloadData];
-//            }else{
-//                [weakSelf creatView];
-//                [self setrefresh];
-//            }
-//            [weakSelf endrefresh];
-//        }else{
-//            ShowInfoWithStatus(ErrorMessage);
-//            [weakSelf endrefresh];
+//            ZWHOrderModel *model;
+//             NSLog(@"************= %@",model.postMoney);
+            [weakSelf.tableView reloadData];
+            if (weakSelf.tableView) {
+                [weakSelf.tableView reloadData];
+            }else{
+                [weakSelf creatView];
+                [self setrefresh];
+            }
+            [weakSelf endrefresh];
+        }else{
+            ShowInfoWithStatus(ErrorMessage);
+            [weakSelf endrefresh];
         }
     } failed:^(id obj) {
         ShowInfoWithStatus(ErrorNet);
@@ -201,6 +206,7 @@
         return cell;
     }else{
         ZWHOrderModel *order;
+          NSLog(@"************= %@",order.postMoney);
         if (_dataArray.count > 0) {
             order = _dataArray[indexPath.section];
         }
