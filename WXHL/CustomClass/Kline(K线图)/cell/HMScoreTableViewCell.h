@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "HMScoreModel.h"
 
+@protocol SellScoreBtnDelegate<NSObject>
+- (void)sellScoreBtn:(HMScoreModel *)cell_model;
+@end
+
 @interface HMScoreTableViewCell : UITableViewCell
 @property (nonatomic, strong) UILabel * createDateLabel;
 @property (nonatomic, strong) UILabel * inputMoneyLabel;
@@ -22,5 +26,7 @@
 @property (nonatomic, assign) float cellHeight;
 
 @property (nonatomic, strong) HMScoreModel * model;
+
+@property (assign, nonatomic) id<SellScoreBtnDelegate>degegate;
 
 @end

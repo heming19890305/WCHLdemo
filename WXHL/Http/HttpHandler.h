@@ -256,8 +256,8 @@
 
 #pragma mark - 获取工分数据
 +(void)getScoreData:(NSDictionary *)dict Success:(SuccessBlock)success failed:(FailedBlock)failed;
-
-
+#pragma mark - 工分卖出数据
++(void)sellScoreData:(NSDictionary *)dict Success:(SuccessBlock)success failed:(FailedBlock)failed;
 @end
 
 

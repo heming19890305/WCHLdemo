@@ -155,7 +155,7 @@
     UIButton *cancleBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
     cancleBtn.frame = CGRectMake(5, 5, 30, 30);
     cancleBtn.backgroundColor = [UIColor clearColor];
-    [cancleBtn setImage:[UIImage imageNamed:@"xxx"] forState:UIControlStateNormal];
+    [cancleBtn setImage:[UIImage imageNamed:@"left_fanhui"] forState:UIControlStateNormal];
     [cancleBtn addTarget:self action:@selector(cancleBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.bgView addSubview:cancleBtn];
     

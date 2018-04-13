@@ -7,6 +7,7 @@
 //
 
 #import "HMScoreTableViewCell.h"
+#import "HMSellScoreViewViewController.h"
 
 @interface HMScoreTableViewCell()
 
@@ -32,8 +33,11 @@
     _incomeMoneyLabel.text = [self data:model.incomeMoney];
     _poolNumLabel.text = [self data2:model.poolNum];
     _issueDaysLabel.text = [NSString stringWithFormat:@" %0.0f 天",model.issueDays];
-    _dayIssueWorkpointsLabel.text = [NSString stringWithFormat:@" %0.5f ",model.dayIssueWorkpoints];
+    _dayIssueWorkpointsLabel.text = [NSString stringWithFormat:@" %0.5f ",model.poolRealNum];
     _createDateLabel.text = [NSString stringWithFormat:@"%@",model.createDate];
+    if (model.status == 0) {
+        _inputMoneyLabel.hidden = YES;
+    }
 //    NSLog(@"YYY哟 =======%@",model.businessNo);
   
 }
@@ -220,7 +224,7 @@
     [sellBtn setTitle:@"现在卖出" forState:UIControlStateNormal];
     [sellBtn setTitleColor:[UIColor colorWithRed:0 / 255.0 green:132 / 255.0 blue:232 /255.0 alpha:1] forState:0];
     [sellBtn setTitleColor:[UIColor redColor] forState:1];
-    [sellBtn addTarget:self action:@selector(sellBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [sellBtn addTarget:self action:@selector(sellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:sellBtn];
     sellBtn.sd_layout
     .topSpaceToView(diveLine, 10)
@@ -231,10 +235,11 @@
     _cellHeight = bgView.height;
 }
 
-- (void)sellBtnClick
+- (void)sellBtnClick:(UIButton *)sender
 {
     
     NSLog(@"被点击了！");
+    [_degegate sellScoreBtn:_model.id];
 }
 //自适应UILabel 大小
 - (CGSize)addLabel:(UILabel *)label {

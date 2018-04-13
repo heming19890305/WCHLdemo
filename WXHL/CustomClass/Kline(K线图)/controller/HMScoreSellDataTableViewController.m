@@ -30,9 +30,11 @@
 #import "ZWHRecharSuccessViewController.h"
 #import "ZWHOrderDetailViewController.h"
 #import "ZWHChoosePayWayView.h"
+#import "PasswordView.h"
 
 #import "HMScoreModel.h"
 #import "HMScoreTableViewCell.h"
+#import "HMSellScoreViewViewController.h"
 
 
 #define norCell @"ZWHOrderTableViewCell.h"
@@ -40,7 +42,7 @@
 
 #define EMPCELL @"uitableview"
 
-@interface HMScoreSellDataTableViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HMScoreSellDataTableViewController ()<UITableViewDelegate,UITableViewDataSource, SellScoreBtnDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,assign)NSInteger index;
 @property(nonatomic,strong)NSMutableArray *dataArray;
@@ -51,6 +53,13 @@
 @property(nonatomic,strong)EmptyView *emptyView;
 
 @property (nonatomic, assign) float cellHeight;
+
+@property(nonatomic,strong)UIButton *chbackgroundBtn;
+
+@property(nonatomic,assign)NSInteger idx;
+
+@property(nonatomic,assign)NSInteger way;
+//@property(nonatomic,strong)PasswordView *pdView;
 @end
 
 @implementation HMScoreSellDataTableViewController
@@ -223,45 +232,119 @@
     {
         HMScoreModel * scoreModel;
         HMScoreTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:norCell forIndexPath:indexPath];
+        cell.degegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         scoreModel = _dataArray[indexPath.section];
         _cellHeight = cell.cellHeight;
+     
         cell.model = scoreModel;
         
         return cell;
     }
-//    else{
-//        ZWHOrderModel *order;
-//        if (_dataArray.count > 0) {
-//            order = _dataArray[indexPath.section];
-//        }
-//        if ([order.status integerValue]==3) {
-            ZWHSpeOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:speCell forIndexPath:indexPath];
-//            cell.num.hidden = NO;
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            if (_dataArray.count > 0) {
-//                MJWeakSelf
-//                ZWHOrderModel *model = _dataArray[indexPath.section];
-//                cell.ordermodel = model.goodsList[indexPath.row];
-//                cell.clicked = ^(ZWHGoodsModel *model) {
-//                    [weakSelf evlClicked:model];
-//                };
-//            }
-//            return cell;
-//        }else{
-//            ZWHOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:norCell forIndexPath:indexPath];
-//            cell.num.hidden = NO;
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            if (_dataArray.count > 0) {
-//                ZWHOrderModel *model = _dataArray[indexPath.section];
-//                cell.ordermodel = model.goodsList[indexPath.row];
-//            }
-//            return cell;
-//        }
-//    }
+
 }
 
+#pragma mark - 实现SellScoreBtnDelegate 代理
+- (void)sellScoreBtn:(HMScoreModel*)btn
+{
+    MJWeakSelf
+    NSLog(@" 实现SellScoreBtnDelegate 代理 = %@",btn);
+        HMSellScoreViewViewController *sellScoreView = [[HMSellScoreViewViewController alloc] init];
+//        sellScoreView.title = @"卖出工分";
+//        [self setHidesBottomBarWhenPushed:YES];
+//        UIBarButtonItem * backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//        self.navigationItem.backBarButtonItem = backBtn;
+//        [self.navigationController pushViewController:sellScoreView animated:YES];
+    
+//    NSMutableArray *arr = [NSMutableArray array];
+//    for (HMScoreModel *model in self.dataArray) {
+//        [arr addObject:model.id];
+//    }
+    
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    _chbackgroundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _chbackgroundBtn.backgroundColor = [UIColor blackColor];
+    _chbackgroundBtn.alpha = 0.5;
+    [_chbackgroundBtn addTarget:self action:@selector(dismisChooseView) forControlEvents:UIControlEventTouchUpInside];
+    [window addSubview:_chbackgroundBtn];
+    _chbackgroundBtn.sd_layout
+    .topEqualToView(window)
+    .leftEqualToView(window)
+    .rightEqualToView(window)
+    .bottomEqualToView(window);
+    _pdView = [[PasswordView alloc] initWithFrame:CGRectMake(0, HEIGHT_TO(210), self.view.bounds.size.width, SCREENHIGHT - HEIGHT_TO(210))];
+    _pdView.returnPasswordStringBlock = ^(NSString *password){
+        NSLog(@"密码------- =%@",btn);
+        [weakSelf dismisChooseView];
+        ShowProgress
+        NotAllowUser
+//        NSString *waystr = [NSString stringWithFormat:@"%ld",weakSelf.way];
+        NSString *paywaystr = [NSString stringWithFormat:@"%ld",weakSelf.idx+1];
+        [weakSelf.view endEditing:true];
+//        [HttpHandler getsubmitOrder:@{@"wkpId":btn,@"payWay":paywaystr,@"payPwd":password,@"v_weichao":[UserManager token]} Success:^(id obj) {
+//            NSLog(@"--支付密码_____---%@",obj);
+//            if (ReturnValue == 200) {
+////                if (weakSelf.idx+1 == 1) {
+////                    [weakSelf aliPay:obj[@"data"] urlScheme:@"com.ZWHWXHL.cn.WXHL" Data:obj[@"data"]];
+////                }else{
+//
+//                    ShowSuccessWithStatus(@"支付成功");
+////                    [weakSelf successClicked];
+//            }else{
+//                ShowSuccessWithStatus(obj[@"message"]);
+//
+//        } failed:^(id obj) {
+//            ShowInfoWithStatus(ErrorNet);
+//        }];
+//    };
+//    _pdView.dismissV = ^{
+//        [weakSelf.chbackgroundBtn removeFromSuperview];
+//        [weakSelf.pdView removeFromSuperview];
+//    };
+//
+//    _pdView.findpw = ^{
+//        NSLog(@"忘记密码");
+//        [weakSelf dismisChooseView];
+//        ZWHPayPasViewController *vc = [[ZWHPayPasViewController alloc]init];
+//        vc.title = @"支付密码";
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [weakSelf.navigationController pushViewController:vc animated:YES];
+//    };
+//
+//    [window addSubview:_pdView];
+        [HttpHandler sellScoreData:@{@"wkpId":btn, @"payPwd":password, @"v_weichao":[UserManager token]} Success:^(id obj) {
+             NSLog(@"工分卖出 --------====== %@",obj);
+            if (ReturnValue == 200) {
+                NSLog(@"工分卖出 --------====== %@",obj);
+                ShowSuccessWithStatus(@"支付成功");
+                //   [weakSelf successClicked];
+            }
+        } failed:^(id obj) {
+             ShowInfoWithStatus(ErrorNet);
+        }];
+    };
+            _pdView.dismissV = ^{
+                [weakSelf.chbackgroundBtn removeFromSuperview];
+                [weakSelf.pdView removeFromSuperview];
+            };
+        
+            _pdView.findpw = ^{
+                NSLog(@"忘记密码");
+                [weakSelf dismisChooseView];
+                ZWHPayPasViewController *vc = [[ZWHPayPasViewController alloc]init];
+                vc.title = @"支付密码";
+                vc.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:vc animated:YES];
+            };
+        
+            [window addSubview:_pdView];
+    
+}
 
+-(void)dismisChooseView{
+    [_chbackgroundBtn removeFromSuperview];
+    [_pdView removeFromSuperview];
+}
 
 @end
 

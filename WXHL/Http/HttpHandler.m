@@ -474,6 +474,14 @@
     [self appendGetUrl:@"/api/workpoints/v1/vipWkpList" success:success failed:failed postDict:dict];
 }
 
+#pragma mark - 工分卖出
++(void)sellScoreData:(NSDictionary *)dict Success:(SuccessBlock)success failed:(FailedBlock)failed{
+    [self appendPostUrl:@"/api/workpoints/v1/vipWkpSell" success:success failed:failed postDict:dict];
+}
+#pragma mark - 获取工分数据
+
+
+
 
 + (void)appendPostUrl:(NSString *)appendUrl success:(SuccessBlock)success failed:(FailedBlock)failed postDict:(NSDictionary *)postDict{
     [ZSHttpTool postWithPath:appendUrl params:postDict success:^(id json) {

@@ -429,6 +429,7 @@
         .bottomEqualToView(window);
         _pdView = [[PasswordView alloc] initWithFrame:CGRectMake(0, HEIGHT_TO(210), self.view.bounds.size.width, SCREENHIGHT - HEIGHT_TO(210))];
         _pdView.returnPasswordStringBlock = ^(NSString *password){
+            NSLog(@"密码------- =%@",password);
             [weakSelf dismisChooseView];
             ShowProgress
             NotAllowUser

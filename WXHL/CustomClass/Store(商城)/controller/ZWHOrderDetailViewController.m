@@ -319,7 +319,7 @@
     }else{
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         _backgroundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _backgroundBtn.backgroundColor = [UIColor blackColor];
+        _backgroundBtn.backgroundColor = [UIColor redColor];
         _backgroundBtn.alpha = 0.5;
         [_backgroundBtn addTarget:self action:@selector(dismisChooseView) forControlEvents:UIControlEventTouchUpInside];
         [window addSubview:_backgroundBtn];
