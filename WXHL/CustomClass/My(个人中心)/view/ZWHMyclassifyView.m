@@ -57,7 +57,7 @@
 -(void)creatView{
     CGFloat wid = (SCREENWIDTH)/4;
     CGFloat hig = wid*0.8;
-    //NSArray * dataArray = @[@"商城",@"钱包",@"封坛酒",@"商脉圈",@"个性定制",@"充值",@"提现",@"微超货柜"];
+//    NSArray * dataArray = @[@"商城",@"钱包",@"封坛酒",@"商脉圈",@"个性定制",@"充值",@"提现",@"微超货柜"];
     _red1 = [[UILabel alloc]init];
     _red2 = [[UILabel alloc]init];
     _red3 = [[UILabel alloc]init];

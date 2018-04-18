@@ -129,14 +129,14 @@
     };
     
     [self addSubview:self.downview];
-    UIView *lingview = [[UIView alloc]init];
-    lingview.backgroundColor = LINECOLOR;
-    [self addSubview:lingview];
-    lingview.sd_layout
-    .widthIs(SCREENWIDTH)
-    .centerXEqualToView(self)
-    .topSpaceToView(self.downview, 0)
-    .heightIs(HEIGHT_TO(5));
+//    UIView *lingview = [[UIView alloc]init];
+//    lingview.backgroundColor = LINECOLOR;
+//    [self addSubview:lingview];
+//    lingview.sd_layout
+//    .widthIs(SCREENWIDTH)
+//    .centerXEqualToView(self)
+//    .topSpaceToView(self.downview, 0)
+//    .heightIs(HEIGHT_TO(5));
     
     [self addSubview:self.bottomview];
     self.bottomview.didClicked = ^(NSInteger idx) {
@@ -160,20 +160,21 @@
 }
 
 
--(ZWHDownClassifyView *)downview{
-    if (!_downview) {
-        CGFloat wid = (SCREENWIDTH)/4;
-        CGFloat hig = wid*0.8;
-        _downview = [[ZWHDownClassifyView alloc] initWithFrame:CGRectMake(0, HEIGHT_TO(160) + HEIGHT_TO(10)+hig, SCREENWIDTH,hig + HEIGHT_TO(10))];
-        _downview.dataArray = @[@"我的工分",@"当前价格",@"工分数量",@"工分市值"];
-    }
-    return _downview;
-}
+//-(ZWHDownClassifyView *)downview{
+//    if (!_downview) {
+//        CGFloat wid = (SCREENWIDTH)/4;
+//        CGFloat hig = wid*0.8;
+//        _downview = [[ZWHDownClassifyView alloc] initWithFrame:CGRectMake(0, HEIGHT_TO(160) + HEIGHT_TO(10)+hig, SCREENWIDTH,hig + HEIGHT_TO(10))];
+//        _downview.dataArray = @[@"我的工分",@"当前价格",@"工分数量",@"工分市值"];
+////         _downview.dataArray = @[@"我的工分",@"工分数量"];
+//    }
+//    return _downview;
+//}
 
 -(ZWHMyMidView *)bottomview{
     if (!_bottomview) {
         CGFloat wid = (SCREENWIDTH)/4;
-        CGFloat hig = wid*0.8;
+        CGFloat hig = wid*0.4;
         _bottomview = [[ZWHMyMidView alloc] initWithFrame:CGRectMake(0, HEIGHT_TO(160) + HEIGHT_TO(10)*2 + HEIGHT_TO(5) + hig*2, SCREENWIDTH, HEIGHT_TO(10)+hig)];
         _bottomview.dataArray = @[@"C2F专区",@"商脉圈_1",@"消费红利",@"消息中心"];
     }

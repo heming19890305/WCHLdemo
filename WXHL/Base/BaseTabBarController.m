@@ -75,7 +75,7 @@
     [self addChildVC:[[ZWHHomeViewController alloc]init] name:@"首页" imageName:@"home_hui" selectedImageName:@"home_lan"];
     
     
-    [self addChildVC:[[HMScoreViewController alloc]init] name:@"工分" imageName:@"kxian_hui" selectedImageName:@"kxian_lan"];
+    [self addChildVC:[[ZWHKlineViewController alloc]init] name:@"工分" imageName:@"kxian_hui" selectedImageName:@"kxian_lan"];
     
     
     [self addChildVC:[[ZWHShopCarViewController alloc]init] name:@"购物车" imageName:@"shop_hui" selectedImageName:@"shop_lan"];

@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WXHL/CustomClass/Home(&#x9996;&#x9875;)/view/ZWHMyMidView.m"
-            timestampString = "542648099.112512"
+            timestampString = "545711334.379552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
             landmarkName = "-setDataArray:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WXHL/CustomClass/Kline(K&#x7ebf;&#x56fe;)/cell/ZWHKSixTableViewCell.m"
-            timestampString = "542786771.256475"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-creatView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -164,32 +148,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WXHL/CustomClass/Kline(K&#x7ebf;&#x56fe;)/controller/HMScoreSellDataTableViewController.m"
-            timestampString = "545283220.226421"
+            filePath = "WXHL/CustomClass/My(&#x4e2a;&#x4eba;&#x4e2d;&#x5fc3;)/controller/&#x6d88;&#x8d39;&#x7ea2;&#x5229;/ZWHBonusViewController.m"
+            timestampString = "545711334.379776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
-            landmarkName = "-sellScoreBtn:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WXHL/CustomClass/Kline(K&#x7ebf;&#x56fe;)/controller/HMScoreSellDataTableViewController.m"
-            timestampString = "545283220.2270221"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
-            landmarkName = "-sellScoreBtn:"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "-sellClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

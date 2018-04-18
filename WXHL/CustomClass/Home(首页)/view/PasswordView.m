@@ -75,7 +75,7 @@ static const CGFloat boxWH = 55;
     self.contentTextField = contentField;
     contentField.keyboardType = UIKeyboardTypeNumberPad;
     contentField.placeholder = @"请输入支付密码";
-    contentField.hidden = NO;
+    contentField.hidden = YES;
     [contentField addTarget:self action:@selector(txchange:) forControlEvents:UIControlEventEditingChanged];
     [self addSubview:contentField];
     

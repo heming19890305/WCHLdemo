@@ -20,7 +20,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self creatView];
-        self.contentView.backgroundColor = ORDERBACK;
+        self.contentView.backgroundColor =[UIColor whiteColor];
+//        NSLog(@"model---staus = %@",_model.status);ORDERBACK
         
     }
     return self;
@@ -35,32 +36,23 @@
     _issueDaysLabel.text = [NSString stringWithFormat:@" %0.0f 天",model.issueDays];
     _dayIssueWorkpointsLabel.text = [NSString stringWithFormat:@" %0.5f ",model.poolRealNum];
     _createDateLabel.text = [NSString stringWithFormat:@"%@",model.createDate];
-    if (model.status == 0) {
-        _inputMoneyLabel.hidden = YES;
-    }
+    
+    
 //    NSLog(@"YYY哟 =======%@",model.businessNo);
   
 }
 - (void)creatView
 {
-    UIView * bgView = [[UIView alloc] init];
-    bgView.backgroundColor = [UIColor whiteColor];
-    [self.contentView addSubview:bgView];
-    bgView.sd_layout
-    .leftEqualToView(self.contentView)
-    .topEqualToView(self.contentView)
-    .rightEqualToView(self.contentView)
-    .heightIs(200);
    /**累计获得收益*/
     UILabel * topTitleLabel = [[UILabel alloc] init];
     topTitleLabel.text = @"累计获得收益";
     topTitleLabel.font = [UIFont systemFontOfSize:18.0];
     topTitleLabel.textColor = [UIColor blackColor];
-    [bgView addSubview:topTitleLabel];
+    [self.contentView addSubview:topTitleLabel];
     CGSize topTitleLabelSize = [self addLabel:topTitleLabel];
     topTitleLabel.sd_layout
-    .topSpaceToView(bgView, 15)
-    .leftSpaceToView(bgView, 10)
+    .topSpaceToView(self.contentView, 15)
+    .leftSpaceToView(self.contentView, 10)
     .widthIs(topTitleLabelSize.width)
     .heightIs(topTitleLabelSize.height);
     
@@ -69,11 +61,11 @@
     creatTime.text = @"2018-04-04 ";
     creatTime.font = [UIFont systemFontOfSize:14.0];
     creatTime.textColor = [UIColor lightGrayColor];
-    [bgView addSubview:creatTime];
+    [self.contentView addSubview:creatTime];
     CGSize creatTimeSize = [self addLabel:creatTime];
     creatTime.sd_layout
     .centerYEqualToView(topTitleLabel)
-    .rightSpaceToView(bgView, 30)
+    .rightSpaceToView(self.contentView, 30)
     .widthIs(creatTimeSize.width)
     .heightIs(creatTimeSize.height);
     
@@ -82,11 +74,11 @@
     incomeMoneyLabel.text = @"￥000000000";
     incomeMoneyLabel.font = [UIFont systemFontOfSize:26.0];
     incomeMoneyLabel.textColor = [UIColor lightGrayColor];
-    [bgView addSubview:incomeMoneyLabel];
+    [self.contentView addSubview:incomeMoneyLabel];
     CGSize incomeMoneyLabelSize = [self addLabel:incomeMoneyLabel];
     incomeMoneyLabel.sd_layout
     .topSpaceToView(topTitleLabel, 10)
-    .leftSpaceToView(bgView, 5)
+    .leftSpaceToView(self.contentView, 5)
     .widthIs(incomeMoneyLabelSize.width)
     .heightIs(incomeMoneyLabelSize.height);
     /**投入资金*/
@@ -95,12 +87,12 @@
 
     titleLabel_1.font = [UIFont systemFontOfSize:14.0];
     titleLabel_1.textColor = [UIColor grayColor];
-    [bgView addSubview:titleLabel_1];
+    [self.contentView addSubview:titleLabel_1];
     
     CGSize titleLabel_1_size = [self addLabel:titleLabel_1];
     titleLabel_1.sd_layout
     .topSpaceToView(incomeMoneyLabel, 10)
-    .leftSpaceToView(bgView,8)
+    .leftSpaceToView(self.contentView,8)
     .widthIs(titleLabel_1_size.width)
     .heightIs(titleLabel_1_size.height);
     
@@ -110,7 +102,7 @@
     
     inputMoney.font = [UIFont systemFontOfSize:14.0];
     inputMoney.textColor = [UIColor redColor];
-    [bgView addSubview:inputMoney];
+    [self.contentView addSubview:inputMoney];
     
     CGSize inputMoney_size = [self addLabel:inputMoney];
     inputMoney.sd_layout
@@ -125,12 +117,12 @@
     
     titleLabel_2.font = [UIFont systemFontOfSize:14.0];
     titleLabel_2.textColor = [UIColor grayColor];
-    [bgView addSubview:titleLabel_2];
+    [self.contentView addSubview:titleLabel_2];
     
     CGSize titleLabel_2_size = [self addLabel:titleLabel_2];
     titleLabel_2.sd_layout
     .topSpaceToView(titleLabel_1, 10)
-    .leftSpaceToView(bgView,8)
+    .leftSpaceToView(self.contentView,8)
     .widthIs(titleLabel_2_size.width)
     .heightIs(titleLabel_2_size.height);
     
@@ -140,7 +132,7 @@
     
     poolNum.font = [UIFont systemFontOfSize:14.0];
     poolNum.textColor = [UIColor redColor];
-    [bgView addSubview:poolNum];
+    [self.contentView addSubview:poolNum];
     CGSize poolNum_size = [self addLabel:poolNum];
     poolNum.sd_layout
     .topSpaceToView(titleLabel_1, 10)
@@ -157,11 +149,11 @@
     
     issueDays.font = [UIFont systemFontOfSize:16.0];
     issueDays.textColor = [UIColor redColor];
-    [bgView addSubview:issueDays];
+    [self.contentView addSubview:issueDays];
     CGSize issueDays_size = [self addLabel:issueDays];
     issueDays.sd_layout
     .topSpaceToView(incomeMoneyLabel, 10)
-    .rightSpaceToView(bgView,20)
+    .rightSpaceToView(self.contentView,20)
     .widthIs(issueDays_size.width)
     .heightIs(issueDays_size.height);
     
@@ -176,11 +168,11 @@
     
     dayIssueWorkpoints.font = [UIFont systemFontOfSize:14.0];
     dayIssueWorkpoints.textColor = [UIColor redColor];
-    [bgView addSubview:dayIssueWorkpoints];
+    [self.contentView addSubview:dayIssueWorkpoints];
     CGSize dayIssueWorkpoints_size = [self addLabel:dayIssueWorkpoints];
     dayIssueWorkpoints.sd_layout
     .topSpaceToView(issueDays, 10)
-    .rightSpaceToView(bgView,10)
+    .rightSpaceToView(self.contentView,10)
     .widthIs(dayIssueWorkpoints_size.width)
     .heightIs(dayIssueWorkpoints_size.height);
     
@@ -188,7 +180,7 @@
     titleLabel_4.text = @"到账工分(个): ";
     titleLabel_4.font = [UIFont systemFontOfSize:14.0];
     titleLabel_4.textColor = [UIColor grayColor];
-    [bgView addSubview:titleLabel_4];
+    [self.contentView addSubview:titleLabel_4];
     
     CGSize titleLabel_4_size = [self addLabel:titleLabel_4];
     titleLabel_4.sd_layout
@@ -201,7 +193,7 @@
     titleLabel_3.text = @"已发放 ";
     titleLabel_3.font = [UIFont systemFontOfSize:14.0];
     titleLabel_3.textColor = [UIColor grayColor];
-    [bgView addSubview:titleLabel_3];
+    [self.contentView addSubview:titleLabel_3];
     
     CGSize titleLabel_3_size = [self addLabel:titleLabel_3];
     titleLabel_3.sd_layout
@@ -212,34 +204,38 @@
     
     //分割线
     UIView * diveLine = [[UIView alloc] init];
+    _diveLine = diveLine;
     diveLine.backgroundColor = lineColor;
-    [bgView addSubview:diveLine];
+    [self.contentView addSubview:diveLine];
     diveLine.sd_layout
     .topSpaceToView(poolNum, 10)
-    .leftEqualToView(bgView)
-    .rightEqualToView(bgView)
+    .leftEqualToView(self.contentView)
+    .rightEqualToView(self.contentView)
     .heightIs(1);
     
     UIButton * sellBtn = [[UIButton alloc] init];
+    _sellScore_Btn = sellBtn;
     [sellBtn setTitle:@"现在卖出" forState:UIControlStateNormal];
     [sellBtn setTitleColor:[UIColor colorWithRed:0 / 255.0 green:132 / 255.0 blue:232 /255.0 alpha:1] forState:0];
     [sellBtn setTitleColor:[UIColor redColor] forState:1];
     [sellBtn addTarget:self action:@selector(sellBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [bgView addSubview:sellBtn];
+    [self.contentView addSubview:sellBtn];
     sellBtn.sd_layout
     .topSpaceToView(diveLine, 10)
-    .centerXEqualToView(bgView)
+    .centerXEqualToView(self.contentView)
     .widthIs(150)
     .heightIs(40);
     
-    _cellHeight = bgView.height;
+    _cellHeight = _viewHeight;
+ 
 }
 
-- (void)sellBtnClick:(UIButton *)sender
+- (void)sellBtnClick:(HMScoreModel *)cell_model
 {
-    
-    NSLog(@"被点击了！");
-    [_degegate sellScoreBtn:_model.id];
+  
+        [_degegate sellScoreBtn:_model.id];
+  
+   
 }
 //自适应UILabel 大小
 - (CGSize)addLabel:(UILabel *)label {

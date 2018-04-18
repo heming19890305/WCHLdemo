@@ -36,6 +36,8 @@
 #import "HMScoreTableViewCell.h"
 #import "HMSellScoreViewViewController.h"
 
+#import "HMScoreDetailFrame.h"
+
 
 #define norCell @"ZWHOrderTableViewCell.h"
 #define speCell @"ZWHSpeOrderTableViewCell.h"
@@ -63,11 +65,17 @@
 @end
 
 @implementation HMScoreSellDataTableViewController
-
+- (NSMutableArray *)dataArray
+{
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+    }
+    return  _dataArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     _index = 1;
-    _dataArray = [NSMutableArray array];
+//    _dataArray = [NSMutableArray array];
     self.view.backgroundColor = [UIColor whiteColor];
     //[self creatView];
     //[self setrefresh];
@@ -75,6 +83,12 @@
     NOTIFY_ADD(refresh, @"orderlist");
     NOTIFY_ADD(refresh,@"paySuccessAliPay");
     NOTIFY_ADD(payfaild, @"cancelOrderWayChat");
+    
+    //筛选按钮
+//    UIButton * selectBtn = [[UIButton alloc] init];
+//    [selectBtn setTitle:@"可卖" forState:0];
+//    [selectBtn setTitle:@"全部" forState:UIControlStateSelected];
+//    self.navigationItem.rightBarButtonItem = (UIBarButtonItem *)selectBtn;
 }
 
 -(void)refresh{
@@ -197,29 +211,33 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+   
     if (_dataArray.count > 0) {
         return 1;
+    }else
+    {
+        return 0;
     }
-//    if (_dataArray.count > 0) {
-//        ZWHOrderModel *model = _dataArray[section];
-//        return model.goodsList.count;
-//    }
-    return 0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (_dataArray.count == 0) {
-//        return SCREENHIGHT - 64 - 40;
-//    }
-//    ZWHOrderModel *model = _dataArray[indexPath.section];
-//    if ([model.status integerValue] ==3) {
-//        //ZWHGoodsModel *ordermodel = model.goodsList[indexPath.row];
-//        /*if ([ordermodel.commentFlag integerValue]==1) {
-//         return HEIGHT_TO(120);
-//         }*/
-//        return HEIGHT_TO(160);
-//    }
-    return  _cellHeight;
+    if (_dataArray.count == 0) {
+        return SCREENHIGHT - 64 - 40;
+    }
+    HMScoreModel *model = _dataArray[indexPath.section];
+    if ([model.status isEqualToString:@"0"] ) {
+        return  150;
+    }else
+    {
+        return  200;
+    }
+}
+/**调整两个cell之间的间距***/
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.00001;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -235,10 +253,19 @@
         cell.degegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         scoreModel = _dataArray[indexPath.section];
-        _cellHeight = cell.cellHeight;
-     
+
         cell.model = scoreModel;
-        
+        if ([scoreModel.status isEqualToString:@"0"]) {
+
+            cell.sellScore_Btn.hidden = YES;
+            cell.diveLine.hidden = YES;
+        }else
+        {
+
+            cell.sellScore_Btn.hidden = NO;
+            cell.diveLine.hidden = NO;
+        }
+
         return cell;
     }
 
@@ -248,19 +275,7 @@
 - (void)sellScoreBtn:(HMScoreModel*)btn
 {
     MJWeakSelf
-    NSLog(@" 实现SellScoreBtnDelegate 代理 = %@",btn);
-        HMSellScoreViewViewController *sellScoreView = [[HMSellScoreViewViewController alloc] init];
-//        sellScoreView.title = @"卖出工分";
-//        [self setHidesBottomBarWhenPushed:YES];
-//        UIBarButtonItem * backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//        self.navigationItem.backBarButtonItem = backBtn;
-//        [self.navigationController pushViewController:sellScoreView animated:YES];
-    
-//    NSMutableArray *arr = [NSMutableArray array];
-//    for (HMScoreModel *model in self.dataArray) {
-//        [arr addObject:model.id];
-//    }
-    
+  
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     _chbackgroundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _chbackgroundBtn.backgroundColor = [UIColor blackColor];
@@ -274,48 +289,17 @@
     .bottomEqualToView(window);
     _pdView = [[PasswordView alloc] initWithFrame:CGRectMake(0, HEIGHT_TO(210), self.view.bounds.size.width, SCREENHIGHT - HEIGHT_TO(210))];
     _pdView.returnPasswordStringBlock = ^(NSString *password){
-        NSLog(@"密码------- =%@",btn);
+//        NSLog(@"密码------- =%@",btn);
         [weakSelf dismisChooseView];
         ShowProgress
         NotAllowUser
-//        NSString *waystr = [NSString stringWithFormat:@"%ld",weakSelf.way];
         NSString *paywaystr = [NSString stringWithFormat:@"%ld",weakSelf.idx+1];
         [weakSelf.view endEditing:true];
-//        [HttpHandler getsubmitOrder:@{@"wkpId":btn,@"payWay":paywaystr,@"payPwd":password,@"v_weichao":[UserManager token]} Success:^(id obj) {
-//            NSLog(@"--支付密码_____---%@",obj);
-//            if (ReturnValue == 200) {
-////                if (weakSelf.idx+1 == 1) {
-////                    [weakSelf aliPay:obj[@"data"] urlScheme:@"com.ZWHWXHL.cn.WXHL" Data:obj[@"data"]];
-////                }else{
-//
-//                    ShowSuccessWithStatus(@"支付成功");
-////                    [weakSelf successClicked];
-//            }else{
-//                ShowSuccessWithStatus(obj[@"message"]);
-//
-//        } failed:^(id obj) {
-//            ShowInfoWithStatus(ErrorNet);
-//        }];
-//    };
-//    _pdView.dismissV = ^{
-//        [weakSelf.chbackgroundBtn removeFromSuperview];
-//        [weakSelf.pdView removeFromSuperview];
-//    };
-//
-//    _pdView.findpw = ^{
-//        NSLog(@"忘记密码");
-//        [weakSelf dismisChooseView];
-//        ZWHPayPasViewController *vc = [[ZWHPayPasViewController alloc]init];
-//        vc.title = @"支付密码";
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [weakSelf.navigationController pushViewController:vc animated:YES];
-//    };
-//
-//    [window addSubview:_pdView];
+
         [HttpHandler sellScoreData:@{@"wkpId":btn, @"payPwd":password, @"v_weichao":[UserManager token]} Success:^(id obj) {
-             NSLog(@"工分卖出 --------====== %@",obj);
+//             NSLog(@"工分卖出 --------====== %@",obj);
             if (ReturnValue == 200) {
-                NSLog(@"工分卖出 --------====== %@",obj);
+//                NSLog(@"工分卖出 --------====== %@",obj);
                 ShowSuccessWithStatus(@"支付成功");
                 //   [weakSelf successClicked];
             }

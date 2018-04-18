@@ -33,6 +33,7 @@
             top.text = _titArray[i];
              NSLog(@"+++++titArray++++=:%@",_dataArray);
         }
+        
         [self.contentView addSubview:top];
         top.sd_layout
         .leftSpaceToView(self.contentView, wid*i)

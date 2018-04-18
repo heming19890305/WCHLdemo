@@ -24,6 +24,8 @@
 #import "ZWHWalletModel.h"
 
 
+#import "HMScoreSellDataTableViewController.h"
+
 #define ONECELL @"KJUserInfoOneTableViewCell"
 #define NORCELL @"uitableviewcell"
 #define TOCELL @"ZWHToCertifyTableViewCell.h"
@@ -270,6 +272,10 @@
 #pragma -工分卖出
 -(void)sellClick{
     NSLog(@"工分卖出");
+    HMScoreSellDataTableViewController * vc = [[HMScoreSellDataTableViewController alloc] init];
+    vc.title = @"工分";
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 查看明细
@@ -583,7 +589,7 @@
         sellBtn.backgroundColor = [UIColor clearColor];
         [sellBtn addTarget:self action:@selector(sellClick) forControlEvents:UIControlEventTouchUpInside];
         [sellBtn setTitleColor:[UIColor whiteColor] forState:0];
-        [sellBtn setTitle:@"买入" forState:0];
+        [sellBtn setTitle:@"卖出" forState:0];
         sellBtn.layer.cornerRadius = 5;
         sellBtn.layer.masksToBounds = YES;
         sellBtn.layer.borderColor = [[UIColor whiteColor] CGColor];

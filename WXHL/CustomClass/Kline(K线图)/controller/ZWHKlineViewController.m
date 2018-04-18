@@ -119,6 +119,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.backgroundColor = GRAYBACKCOLOR;
 
     
     [self.tableView registerClass:[ZWHNumBtnTableViewCell class] forCellReuseIdentifier:NLCELL];
@@ -195,7 +196,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 1 && indexPath.section == 0) {
-        return HEIGHT_TO(100);
+        return HEIGHT_TO(50);
     }else if (indexPath.row == 0 && indexPath.section == 0){
         return HEIGHT_TO(80);
     }
@@ -214,7 +215,8 @@
         if (indexPath.row == 0) {
             ZWHNumBtnTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NLCELL forIndexPath:indexPath];
             cell.introColor = [UIColor grayColor];
-            cell.titArray = @[@"原始价格(元)",@"发行总量(个)",@"当前价格(元)",@"昨日收盘(元)"];
+//            cell.titArray = @[@"原始价格(元)",@"发行总量(个)",@"当前价格(元)",@"昨日收盘(元)"];
+            cell.titArray = @[@"原始价格(元)",@"发行总量(个)"];
             if (_topArr.count > 0) {
                 cell.dataArray = _topArr;
             }
@@ -222,7 +224,8 @@
             return cell;
         }else{
             ZWHKSixTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SICELL forIndexPath:indexPath];
-            cell.titArray = @[@"日交易量",@"日交易额(元)",@"今日单价(元)",@"昨日单价(元)",@"轮值回购",@"总市值(元)"];
+//            cell.titArray = @[@"日交易量",@"日交易额(元)",@"今日单价(元)",@"昨日单价(元)",@"轮值回购",@"总市值(元)"];
+              cell.titArray = @[@"日交易量",@"日交易额(元)"];
             if (_botArr.count > 0) {
                 cell.dataArray = _botArr;
             }
@@ -251,22 +254,22 @@
         WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
         WKUserContentController *wkUController = [[WKUserContentController alloc] init];
         [wkUController addUserScript:wkUScript];
-        
+
         WKWebViewConfiguration *wkWebConfig = [[WKWebViewConfiguration alloc] init];
         wkWebConfig.userContentController = wkUController;
-        
+
         _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 280)];
         _webView.delegate = self;
         [self.view addSubview:_webView];
         //设置第三方Bridge是否可用
         [WebViewJavascriptBridge enableLogging];
-        
+
         //WebViewJavascriptBridge *bridge = [[WebViewJavascriptBridge alloc]init];
         //关联webView和bridge
         //WebViewJavascriptBridge *bridge = [WebViewJavascriptBridge bridgeForWebView:_webView];
-        
+
         // 初始化*WebViewJavascriptBridge*实例,设置代理,进行桥接
-        
+
         _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView];
         [_bridge setWebViewDelegate:self];
     }
@@ -305,7 +308,6 @@
     MJWeakSelf
     [HttpHandler getSelectDay:@{} Success:^(id obj) {
         if (ReturnValue == 200) {
-            NSLog(@"%@",obj);
             [UserManager sharedData].dayArray = obj[@"data"];
             UIWindow *window = [UIApplication sharedApplication].keyWindow;
             weakSelf.backgroundBtn = [UIButton buttonWithType:UIButtonTypeCustom];

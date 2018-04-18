@@ -28,8 +28,9 @@
     CGFloat wid = (SCREENWIDTH - WIDTH_TO(30))/2;
     for (NSInteger i = 0; i < _titArray.count; i ++) {
         UILabel *top = [[UILabel alloc]init];
+        
         [top textFont:14 textColor:ZWHCOLOR(@"646363") backgroundColor:[UIColor clearColor] textAlignment:NSTextAlignmentLeft];
-        if (_titArray.count > 0) {
+        if (_titArray.count - 4 > 0) {
             top.text = _titArray[i];
         }
         [self.contentView addSubview:top];
@@ -41,8 +42,9 @@
         [top updateLayout];
         
         UILabel *data = [[UILabel alloc]init];
+        
         [data textFont:15 textColor:[UIColor grayColor] backgroundColor:[UIColor clearColor] textAlignment:NSTextAlignmentLeft];
-        if (_dataArray.count > 0) {
+        if (_dataArray.count - 4 > 0) {
             data.text = _dataArray[i];
             NSLog(@"+++++++++=:%@",_dataArray);
         }

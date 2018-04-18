@@ -71,14 +71,14 @@
         .rightEqualToView(view);
     }
     
-    UIView *lineview = [[UIView alloc]init];
-    lineview.backgroundColor = LINECOLOR;
-    [self addSubview:lineview];
-    lineview.sd_layout
-    .leftEqualToView(self)
-    .rightEqualToView(self)
-    .bottomEqualToView(self)
-    .heightIs(1);
+//    UIView *lineview = [[UIView alloc]init];
+//    lineview.backgroundColor = LINECOLOR;
+//    [self addSubview:lineview];
+//    lineview.sd_layout
+//    .leftEqualToView(self)
+//    .rightEqualToView(self)
+//    .bottomEqualToView(self)
+//    .heightIs(1);
 }
 
 

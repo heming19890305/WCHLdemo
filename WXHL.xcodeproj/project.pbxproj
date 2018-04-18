@@ -411,6 +411,8 @@
 		86F647411FD90C7100873E41 /* ZWHChoosePayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F647401FD90C7100873E41 /* ZWHChoosePayWayView.m */; };
 		86F647501FDA58C900873E41 /* ZWHMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86F6474F1FDA58C900873E41 /* ZWHMessageDetailViewController.m */; };
 		E51DFD7D207C8D060057D7B0 /* HMScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E51DFD7C207C8D060057D7B0 /* HMScoreTableViewCell.m */; };
+		E55C7A4C2084897D006A8D60 /* HMScoreDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55C7A4B2084897D006A8D60 /* HMScoreDetailView.m */; };
+		E55C7A4F208489E6006A8D60 /* HMScoreDetailFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E55C7A4E208489E6006A8D60 /* HMScoreDetailFrame.m */; };
 		E578FE0D207A09CC00211CDA /* HMScoreSellDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E578FE0C207A09CC00211CDA /* HMScoreSellDataTableViewController.m */; };
 		E578FE10207A0A8E00211CDA /* HMScoreHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E578FE0F207A0A8E00211CDA /* HMScoreHeaderViewController.m */; };
 		E59EEC5A20521F8400243A15 /* scoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59EEC5920521F8400243A15 /* scoreViewController.m */; };
@@ -1183,6 +1185,10 @@
 		B9C44E4ECD8A684DE626CF00 /* libPods-WXHL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXHL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51DFD7B207C8D060057D7B0 /* HMScoreTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreTableViewCell.h; sourceTree = "<group>"; };
 		E51DFD7C207C8D060057D7B0 /* HMScoreTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreTableViewCell.m; sourceTree = "<group>"; };
+		E55C7A4A2084897D006A8D60 /* HMScoreDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreDetailView.h; sourceTree = "<group>"; };
+		E55C7A4B2084897D006A8D60 /* HMScoreDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreDetailView.m; sourceTree = "<group>"; };
+		E55C7A4D208489E6006A8D60 /* HMScoreDetailFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreDetailFrame.h; sourceTree = "<group>"; };
+		E55C7A4E208489E6006A8D60 /* HMScoreDetailFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreDetailFrame.m; sourceTree = "<group>"; };
 		E578FE0B207A09CC00211CDA /* HMScoreSellDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreSellDataTableViewController.h; sourceTree = "<group>"; };
 		E578FE0C207A09CC00211CDA /* HMScoreSellDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMScoreSellDataTableViewController.m; sourceTree = "<group>"; };
 		E578FE0E207A0A8E00211CDA /* HMScoreHeaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMScoreHeaderViewController.h; sourceTree = "<group>"; };
@@ -2690,6 +2696,8 @@
 				E5F5B0EB205A03880089C58A /* HMScoreScrollView.m */,
 				E5D7C5DC2064F0A100FB42A4 /* HMPasswordAlertView.h */,
 				E5D7C5DD2064F0A100FB42A4 /* HMPasswordAlertView.m */,
+				E55C7A4A2084897D006A8D60 /* HMScoreDetailView.h */,
+				E55C7A4B2084897D006A8D60 /* HMScoreDetailView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3032,6 +3040,8 @@
 			children = (
 				E5D7C5D62061F37F00FB42A4 /* HMScoreModel.h */,
 				E5D7C5D72061F37F00FB42A4 /* HMScoreModel.m */,
+				E55C7A4D208489E6006A8D60 /* HMScoreDetailFrame.h */,
+				E55C7A4E208489E6006A8D60 /* HMScoreDetailFrame.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3315,6 +3325,7 @@
 				86443A651FBA9C010061AEB6 /* ZSNorTableHeaderView.m in Sources */,
 				86443A8E1FBAE2150061AEB6 /* ZWHChoseExView.m in Sources */,
 				8607A3BF1FB30386003D6B6B /* PasswordView.m in Sources */,
+				E55C7A4C2084897D006A8D60 /* HMScoreDetailView.m in Sources */,
 				8605AE1B1FB02F6B009570CA /* YYSentinel.m in Sources */,
 				86443A821FBABE3E0061AEB6 /* ZWHDoubleTableViewCell.m in Sources */,
 				869BB49A1FBD8046006E1135 /* ZWHFeedViewController.m in Sources */,
@@ -3349,6 +3360,7 @@
 				8605ADE61FB02F6A009570CA /* UIGestureRecognizer+YYAdd.m in Sources */,
 				8605AD9F1FB02F6A009570CA /* JSONHTTPClient.m in Sources */,
 				8607A3931FB2AC3C003D6B6B /* ZWHLeRiTableViewCell.m in Sources */,
+				E55C7A4F208489E6006A8D60 /* HMScoreDetailFrame.m in Sources */,
 				863455D41FB97774001EE7A8 /* ZWHThridViewController.m in Sources */,
 				8607A38D1FB2A879003D6B6B /* ZWHRecharDetailViewController.m in Sources */,
 				8605AE0D1FB02F6B009570CA /* YYTextArchiver.m in Sources */,

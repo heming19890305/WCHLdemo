@@ -22,8 +22,14 @@
 @property (nonatomic, strong) UILabel * poolRealNumLabel;
 @property (nonatomic, strong) UILabel * poolNumLabel;
 @property (nonatomic, strong) UILabel * dayIssueWorkpointsLabel;
-
+//全部高度
 @property (nonatomic, assign) float cellHeight;
+//背景高度
+@property (nonatomic, assign) float viewHeight;
+//分割线
+@property (nonatomic, strong) UIView * diveLine;
+
+@property (nonatomic, strong) UIButton * sellScore_Btn;
 
 @property (nonatomic, strong) HMScoreModel * model;
 

@@ -186,7 +186,7 @@
     MJWeakSelf
     [HttpHandler getCurrentUser:@{@"v_weichao":[UserManager token]} Success:^(id obj) {
         if (ReturnValue == 200) {
-            NSLog(@"*********%@",obj);
+            NSLog(@"%@",obj);
             phoneStr = obj[@"data"][@"phone"];
             [UserManager sharedData].mymodel = [ZWHMyModel mj_objectWithKeyValues:obj[@"data"]];
             [UserManager sharedData].userDict = obj[@"data"];
@@ -203,10 +203,10 @@
     
     [HttpHandler getMyWorkpoints:@{@"v_weichao":[UserManager token]} Success:^(id obj) {
         if (ReturnValue == 200) {
-            NSLog(@"++========%@",obj);
+            NSLog(@"%@",obj);
             ZWHMyWorkModel *model = [ZWHMyWorkModel mj_objectWithKeyValues:obj[@"data"]];
             weakSelf.headerView.downview.workmodel = model;
-            NSLog(@"******&&&&######= %@", weakSelf.headerView.downview.workmodel.scoreNumber);
+            NSLog(@"%@", weakSelf.headerView.downview.workmodel.scoreNumber);
 
             [weakSelf endrefresh];
         }else{
@@ -331,7 +331,7 @@
 -(ZWHMyheaderView *)headerView{
     if (!_headerView) {
         CGFloat wid = (SCREENWIDTH)/4;
-        CGFloat hig = wid*0.8;
+        CGFloat hig = wid*0.6;
         _headerView = [[ZWHMyheaderView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, HEIGHT_TO(160) + HEIGHT_TO(10)*3+hig*3 + HEIGHT_TO(5))];
         [_headerView.settingBtn addTarget:self action:@selector(settingClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_headerView.rigBtn addTarget:self action:@selector(showMore) forControlEvents:UIControlEventTouchUpInside];
