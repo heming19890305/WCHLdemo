@@ -61,6 +61,9 @@
 @property(nonatomic,assign)NSInteger idx;
 
 @property(nonatomic,assign)NSInteger way;
+
+
+@property (nonatomic, assign, ) BOOL isButtonSelected;
 //@property(nonatomic,strong)PasswordView *pdView;
 @end
 
@@ -83,14 +86,36 @@
     NOTIFY_ADD(refresh, @"orderlist");
     NOTIFY_ADD(refresh,@"paySuccessAliPay");
     NOTIFY_ADD(payfaild, @"cancelOrderWayChat");
-    
+    _isButtonSelected = NO;
     //筛选按钮
-//    UIButton * selectBtn = [[UIButton alloc] init];
-//    [selectBtn setTitle:@"可卖" forState:0];
-//    [selectBtn setTitle:@"全部" forState:UIControlStateSelected];
-//    self.navigationItem.rightBarButtonItem = (UIBarButtonItem *)selectBtn;
+    [self addSelectBtn];
+
+}
+//筛选按钮
+- (void)addSelectBtn
+{
+    UIButton * selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    selectBtn.frame = CGRectMake(0, 0, 40, 30);
+    selectBtn.selected = NO;
+    [selectBtn setTitle:@"卖" forState:0];
+    [selectBtn setTitle:@"全部" forState:UIControlStateSelected];
+    [selectBtn setTitleColor:[UIColor blueColor] forState:0];
+    [selectBtn addTarget:self action:@selector(selecctBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem * rightBtn = [[UIBarButtonItem alloc] initWithCustomView:selectBtn];
+    [self.navigationItem setRightBarButtonItem:rightBtn];
+                                  
+    
+    
 }
 
+- (void)selecctBtnClick:(UIButton *)sender{
+    sender.selected = !sender.selected;
+    _isButtonSelected = !_isButtonSelected;
+    [self.tableView reloadData];
+    NSLog(@"aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbb = %d",_isButtonSelected);
+    
+}
 -(void)refresh{
     [self.tableView.mj_header beginRefreshing];
 }
@@ -226,6 +251,10 @@
     }
     HMScoreModel *model = _dataArray[indexPath.section];
     if ([model.status isEqualToString:@"0"] ) {
+        if (_isButtonSelected)
+        {
+            return 0;
+        }
         return  150;
     }else
     {
@@ -234,7 +263,18 @@
 }
 /**调整两个cell之间的间距***/
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
+    
+    HMScoreModel *model = _dataArray[section];
+    if ([model.status isEqualToString:@"0"] ) {
+        if (_isButtonSelected)
+        {
+            return 0.01;
+        }
+        return  10;
+    }else
+    {
+        return  12;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.00001;
@@ -256,16 +296,20 @@
 
         cell.model = scoreModel;
         if ([scoreModel.status isEqualToString:@"0"]) {
-
+            if (_isButtonSelected) {
+//
+                cell.hidden = YES;
+            }
             cell.sellScore_Btn.hidden = YES;
             cell.diveLine.hidden = YES;
         }else
         {
-
+//
             cell.sellScore_Btn.hidden = NO;
             cell.diveLine.hidden = NO;
         }
-
+        
+        
         return cell;
     }
 
